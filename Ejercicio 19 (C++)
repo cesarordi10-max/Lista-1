@@ -1,0 +1,33 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int monto;
+
+    // Validación de entrada no negativa
+    do {
+        cout << "Ingrese la cantidad entera de dinero (positiva): ";
+        cin >> monto;
+        if (monto < 0) {
+            cout << "Error: No se admiten montos negativos. Intente de nuevo." << endl;
+        cout << "------------------------" << endl;
+        }
+    } while (monto < 0);
+
+    // Lógica de desglose
+    cout << "\nEl desglose resultante es:" << endl;
+    
+    cout << "Billetes de 20: " << monto / 20 << endl;
+    monto %= 20;
+    
+    cout << "Billetes de 10: " << monto / 10 << endl;
+    monto %= 10;
+    
+    cout << "Billetes de 5: " << monto / 5 << endl;
+    monto %= 5;
+    
+    cout << "Billetes de 1: " << monto << endl;
+
+    return 0;
+}
