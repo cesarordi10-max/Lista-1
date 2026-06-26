@@ -1,0 +1,55 @@
+#include <iostream>
+
+using namespace std;
+
+class Fibonacci {
+private:
+    int n, m;
+
+public:
+    // Constructor que recibe el rango
+    Fibonacci(int inicio, int fin) {
+        n = inicio;
+        m = fin;
+    }
+
+    // Método que muestra la serie de Fibonacci en el rango [n, m]
+    void mostrarSerie() {
+        int a = 0, b = 1;
+
+        cout << "Serie de Fibonacci entre " << n << " y " << m << ":\n";
+
+        while (a <= m) {
+            if (a >= n) {
+                cout << a << " ";
+            }
+            int siguiente = a + b;
+            a = b;
+            b = siguiente;
+        }
+
+        cout << endl;
+    }
+};
+
+int main() {
+    int n, m;
+
+    // Leer los valores de inicio y fin
+    cout << "Introduce el valor minimo (n): ";
+    cin >> n;
+    cout << "Introduce el valor maximo (m): ";
+    cin >> m;
+
+    // Validación básica
+    if (n > m) {
+        cout << "Error: n debe ser menor o igual que m." << endl;
+        return 1;
+    }
+
+    // Crear objeto Fibonacci y mostrar la serie
+    Fibonacci fibonacci(n, m);
+    fibonacci.mostrarSerie();
+
+    return 0;
+}
