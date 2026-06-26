@@ -1,0 +1,79 @@
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+class Encuesta {
+private:
+    int totalEncuestados;
+    int aceptaA;
+    int aceptaB;
+    int aceptaAmbos;
+    int aceptaSoloA;
+    int aceptaSoloB;
+    int aceptaNinguno;
+
+public:
+    // Constructor para inicializar todos los contadores en 0
+    Encuesta() : totalEncuestados(0), aceptaA(0), aceptaB(0), aceptaAmbos(0), aceptaSoloA(0), aceptaSoloB(0), aceptaNinguno(0) {}
+
+    void realizarEncuesta() {
+        cout << "Ingrese el número total de encuestados: ";
+        cin >> totalEncuestados;
+
+        for (int i = 1; i <= totalEncuestados; i++) {
+            cout << "Encuestado #" << i << endl;
+            int a, b;
+            
+            cout << "¿Acepta el producto A? (1 = sí, 0 = no): ";
+            cin >> a;
+            
+            cout << "¿Acepta el producto B? (1 = sí, 0 = no): ";
+            cin >> b;
+
+            procesarRespuesta(a, b);
+        }
+    }
+
+    void mostrarResultados() {
+        cout << "\n--- Resultados de la Encuesta ---" << endl;
+        cout << "Total de encuestados: " << totalEncuestados << endl;
+
+        cout << fixed << setprecision(2);
+        cout << "% que acepta el producto A: " << porcentaje(aceptaA) << "%" << endl;
+        cout << "% que acepta el producto B: " << porcentaje(aceptaB) << "%" << endl;
+        cout << "% que acepta ambos productos: " << porcentaje(aceptaAmbos) << "%" << endl;
+        cout << "% que acepta solo el producto A: " << porcentaje(aceptaSoloA) << "%" << endl;
+        cout << "% que acepta solo el producto B: " << porcentaje(aceptaSoloB) << "%" << endl;
+        cout << "% que no acepta ninguno: " << porcentaje(aceptaNinguno) << "%" << endl;
+    }
+
+private:
+    void procesarRespuesta(int a, int b) {
+        if (a == 1) aceptaA++;
+        if (b == 1) aceptaB++;
+
+        if (a == 1 && b == 1) {
+            aceptaAmbos++;
+        } else if (a == 1) {
+            aceptaSoloA++;
+        } else if (b == 1) {
+            aceptaSoloB++;
+        } else {
+            aceptaNinguno++;
+        }
+    }
+
+    double porcentaje(int cantidad) {
+        if (totalEncuestados == 0) return 0.0; // Evitar división por cero
+        return ((double)cantidad / totalEncuestados) * 100;
+    }
+};
+
+int main() {
+    Encuesta encuesta;
+    encuesta.realizarEncuesta();
+    encuesta.mostrarResultados();
+
+    return 0;
+}
