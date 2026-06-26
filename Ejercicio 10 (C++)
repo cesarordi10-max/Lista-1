@@ -1,0 +1,60 @@
+#include <iostream>
+#include <string>
+#include <cmath>
+
+using namespace std;
+
+string binarioAHexadecimal(string binario) {
+    // Asegurarse de que la longitud del número binario sea múltiplo de 4
+    int longitud = binario.length();
+    while (longitud % 4 != 0) {
+        binario = "0" + binario;
+        longitud++;
+    }
+
+    string hexadecimal = "";
+    for (int i = 0; i < binario.length(); i += 4) {
+        string bloque = binario.substr(i, 4); // Extraer 4 bits
+        int valorDecimal = 0;
+
+        for (int j = 0; j < 4; j++) {
+            if (bloque[j] == '1') {
+                valorDecimal += pow(2, 3 - j);
+            }
+        }
+
+        // Convertir el valor decimal a hexadecimal
+        if (valorDecimal < 10) {
+            hexadecimal += to_string(valorDecimal); // Para valores de 0 a 9
+        } else {
+            hexadecimal += (char)(valorDecimal - 10 + 'A'); // Para valores de 10 a 15
+        }
+    }
+
+    return hexadecimal;
+}
+
+int main() {
+    string binario;
+
+    // Pedir al usuario que ingrese el número binario
+    cout << "Introduce un numero binario: ";
+    cin >> binario;
+
+    // Comprobar que el número solo contenga caracteres válidos (0 y 1)
+    for (char c : binario) {
+        if (c != '0' && c != '1') {
+            cout << "Error: El numero binario solo puede contener 0 y 1." << endl;
+            return 1;
+        }
+    }
+
+    // Llamar a la función para convertir de binario a hexadecimal
+    string hexadecimal = binarioAHexadecimal(binario);
+
+    // Mostrar el resultado
+    cout << "El numero binario " << binario << " en hexadecimal es: " << hexadecimal << endl;
+
+    return 0;
+}
+
