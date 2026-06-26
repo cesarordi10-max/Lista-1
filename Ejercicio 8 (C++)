@@ -1,0 +1,21 @@
+#include <iostream>
+#include <iomanip>  // Para setw (alineación)
+
+using namespace std;
+
+int main() {
+    int numero;
+
+    cout << "Introduzca un número: ";
+    cin >> numero;
+
+    cout << "La tabla de multiplicar del " << numero << " es:\n";
+
+    for (int i = 1; i <= 10; ++i) {
+        cout << setw(2) << numero << " x "
+             << setw(2) << i << " = "
+             << setw(3) << numero * i << endl;
+    }
+
+    return 0;
+}
