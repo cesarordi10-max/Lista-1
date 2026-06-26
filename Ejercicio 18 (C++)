@@ -1,0 +1,17 @@
+#include <iostream>
+#include <cmath> // Necesario para sqrt()
+
+using namespace std;
+
+int main() {
+    int P;
+    cout << "Ingrese el valor de P: ";
+    cin >> P;
+
+    cout << "N \t Cuadrado \t Cubo \t Raiz Cuadrada\n";
+    for (int i = 1; i <= P; i++) {
+        cout << i << " \t " << pow(i, 2) << " \t\t " << pow(i, 3) << " \t " << sqrt(i) << endl;
+    }
+
+    return 0;
+}
