@@ -1,0 +1,46 @@
+#include <iostream>
+#include <string>
+#include <cmath>
+
+class Rotador {
+private:
+    std::string numero;
+
+public:
+    Rotador(const std::string& num) : numero(num) {}
+
+    int calcularPromedio() {
+        int suma = 0;
+        for (char digito : numero) {
+            suma += digito - '0'; // Convertimos el carácter a número
+        }
+        return std::round(static_cast<double>(suma) / numero.length()); // Calculamos el promedio y lo redondeamos
+    }
+
+    void rotarIzquierda(int veces) {
+        for (int i = 0; i < veces; ++i) {
+            char primerDigito = numero[0];
+            numero = numero.substr(1) + primerDigito; // Tomamos el primer dígito y lo llevamos al final
+        }
+    }
+
+    void mostrarResultado() {
+        std::cout << "Número después de rotar: " << numero << std::endl;
+    }
+};
+
+int main() {
+    std::string numero;
+    std::cout << "Introduce un número: ";
+    std::cin >> numero;
+
+    Rotador rotador(numero);
+    int promedio = rotador.calcularPromedio();
+
+    std::cout << "Promedio de los dígitos: " << promedio << std::endl;
+
+    rotador.rotarIzquierda(promedio);
+    rotador.mostrarResultado();
+
+    return 0;
+}
