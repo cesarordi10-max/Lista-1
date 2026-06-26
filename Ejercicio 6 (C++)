@@ -1,0 +1,49 @@
+#include <iostream>
+using namespace std;
+class CalculadoraSeno {
+private:
+    double grados;
+    double radianes;
+
+    // Convierte grados a radianes
+    double convertirARadianes(double g) {
+        return g * 3.14159265 / 180.0;
+    }
+
+    // Calcula el seno con 5 términos de la serie de Taylor
+    double calcularSeno(double x) {
+        return x
+               - (x * x * x) / 6
+               + (x * x * x * x * x) / 120
+               - (x * x * x * x * x * x * x) / 5040
+               + (x * x * x * x * x * x * x * x * x) / 362880;
+    }
+
+public:
+    // Constructor
+    CalculadoraSeno(double angulo) {
+        grados = angulo;
+        radianes = convertirARadianes(grados);
+    }
+
+    // Método público para obtener el seno
+    void mostrarSeno() {
+        if (grados < 0 || grados > 360) {
+            cout << "Ángulo fuera de rango." << endl;
+        } else {
+            double resultado = calcularSeno(radianes);
+            cout << "Seno aproximado de " << grados << " grados es: " << resultado << endl;
+        }
+    }
+};
+
+int main() {
+    double angulo;
+    cout << "Ingrese un ángulo en grados (0 a 360): ";
+    cin >> angulo;
+
+    CalculadoraSeno calculadora(angulo);
+    calculadora.mostrarSeno();
+
+    return 0;
+}
