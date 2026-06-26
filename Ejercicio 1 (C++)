@@ -1,0 +1,32 @@
+#include <iostream>
+using namespace std;
+
+class TablaMultiplicar {
+private:
+    int numero;
+
+public:
+    // Constructor que inicializa el número de la tabla
+    TablaMultiplicar(int num) : numero(num) {}
+
+    // Método para imprimir la tabla en consola
+    void mostrarTabla() {
+        for (int i = 1; i <= 10; i++) {
+            cout << numero << " x " << i << " = " << numero * i << endl;
+        }
+    }
+};
+
+int main() {
+    // Creación de objetos para la tabla del 3 y del 9
+    TablaMultiplicar tabla3(3);
+    TablaMultiplicar tabla9(9);
+
+    cout << "Tabla de multiplicar del 3:" << endl;
+    tabla3.mostrarTabla();
+
+    cout << "\nTabla de multiplicar del 9:" << endl;
+    tabla9.mostrarTabla();
+
+    return 0;
+}
