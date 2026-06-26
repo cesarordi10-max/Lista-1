@@ -1,0 +1,46 @@
+#include <iostream>
+
+class Año {
+private:
+    int año;
+
+public:
+    Año(int año) : año(año) {}
+
+    bool esBisiesto() {
+        // Un año es bisiesto si es divisible entre 4, pero no entre 100, salvo que sea divisible entre 400
+        return (año % 4 == 0 && año % 100 != 0) || (año % 400 == 0);
+    }
+
+    int getAño() {
+        return año;
+    }
+};
+
+int main() {
+    int contadorAños = 0;
+    int contadorBisiestos = 0;
+
+    std::cout << "Introduce año:" << std::endl;
+
+    while (contadorAños < 10 && contadorBisiestos < 3) {
+        int añoInput;
+        std::cin >> añoInput;
+
+        Año año(añoInput);
+
+        if (año.esBisiesto()) {
+            std::cout << año.getAño() << " es un año bisiesto." << std::endl;
+            contadorBisiestos++;
+        } else {
+            std::cout << año.getAño() << " no es un año bisiesto." << std::endl;
+        }
+
+        contadorAños++;
+    }
+
+    std::cout << "Fin del programa: " << contadorAños << " años evaluados, "
+              << contadorBisiestos << " años bisiestos encontrados." << std::endl;
+
+    return 0;
+}
