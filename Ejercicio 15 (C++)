@@ -1,0 +1,28 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int N;
+    cout << "Ingrese el valor de N: ";
+    cin >> N;
+
+    long long f1 = 1, f2 = 1, siguiente;
+
+    cout << "Los primeros " << N << " terminos son: ";
+    for (int i = 1; i <= N; i++) {
+        if (i == 1) {
+            cout << f1 << " ";
+        } else if (i == 2) {
+            cout << f2 << " ";
+        } else {
+            siguiente = f1 + f2;
+            cout << siguiente << " ";
+            f1 = f2;
+            f2 = siguiente;
+        }
+    }
+    cout << endl;
+
+    return 0;
+}
