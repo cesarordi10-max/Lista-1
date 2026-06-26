@@ -1,0 +1,33 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int numero, menor = -1, mayor = -1, suma = 0, cantidad = 0;
+
+    cout << "Ingrese una secuencia de numeros positivos (termine con 0):" << endl;
+
+    while (cin >> numero && numero != 0) {
+        if (numero > 0) {
+            if (cantidad == 0) {
+                menor = mayor = numero;
+            } else {
+                if (numero < menor) menor = numero;
+                if (numero > mayor) mayor = numero;
+            }
+            suma += numero;
+            cantidad++;
+        } else {
+            cout << "Por favor, ingrese solo numeros positivos." << endl;
+        }
+    }
+
+    if (cantidad > 0) {
+        cout << "Menor: " << menor << "\nMayor: " << mayor << endl;
+        cout << "Promedio: " << (double)suma / cantidad << endl;
+    } else {
+        cout << "No se ingresaron numeros validos." << endl;
+    }
+
+    return 0;
+}
