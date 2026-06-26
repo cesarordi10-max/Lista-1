@@ -1,0 +1,54 @@
+#include <iostream>
+using namespace std;
+
+class SumadorNumeros {
+private:
+    int limite;
+
+public:
+    // Constructor
+    SumadorNumeros(int lim) : limite(lim) {}
+
+    // Método para sumar números pares
+    int sumaPares() {
+        int suma = 0;
+        for (int i = 1; i <= limite; i++) {
+            if (i % 2 == 0) suma += i;
+        }
+        return suma;
+    }
+
+    // Método para sumar números impares
+    int sumaImpares() {
+        int suma = 0;
+        for (int i = 1; i <= limite; i++) {
+            if (i % 2 != 0) suma += i;
+        }
+        return suma;
+    }
+
+    // Método para sumar múltiplos de 5
+    int sumaMultiplosDe5() {
+        int suma = 0;
+        for (int i = 1; i <= limite; i++) {
+            if (i % 5 == 0) suma += i;
+        }
+        return suma;
+    }
+};
+
+int main() {
+    int numero;
+    cout << "Ingrese un numero entero: ";
+    cin >> numero;
+
+    // Crear instancia de la clase
+    SumadorNumeros sumador(numero);
+
+    // Mostrar resultados
+    cout << "Suma de pares: " << sumador.sumaPares() << endl;
+    cout << "Suma de impares: " << sumador.sumaImpares() << endl;
+    cout << "Suma de multiplos de 5: " << sumador.sumaMultiplosDe5() << endl;
+
+    return 0;
+}
