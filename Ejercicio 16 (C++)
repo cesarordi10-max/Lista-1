@@ -1,0 +1,23 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int num, sumaDivisores = 0;
+    cout << "Ingrese un numero natural positivo: ";
+    cin >> num;
+
+    for (int i = 1; i <= num / 2; i++) {
+        if (num % i == 0) {
+            sumaDivisores += i;
+        }
+    }
+
+    if (sumaDivisores == num && num > 0) {
+        cout << "El numero " << num << " es perfecto." << endl;
+    } else {
+        cout << "El numero " << num << " NO es perfecto." << endl;
+    }
+
+    return 0;
+}
