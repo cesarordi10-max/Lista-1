@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+
+class MultiploSumador {
+private:
+    int multiplo, cantidad;
+
+public:
+    MultiploSumador(int mul, int cant) : multiplo(mul), cantidad(cant) {}
+
+    int calcularSuma() {
+        int suma = 0;
+        for (int i = 1; i <= cantidad; i++) {
+            suma += i * multiplo;
+        }
+        return suma;
+    }
+};
+
+int main() {
+    MultiploSumador sumador(3, 20);
+    cout << "La suma de los primeros 20 múltiplos de 3 es: " << sumador.calcularSuma() << endl;
+
+    return 0;
+}
