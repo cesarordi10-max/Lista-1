@@ -1,0 +1,27 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    const int NumEmpleados = 50; // Constante sugerida [cite: 74]
+    double ptas_hora;
+    
+    cout << "Ingrese el pago por hora ordinaria: ";
+    cin >> ptas_hora;
+
+    for (int contador = 1; contador <= NumEmpleados; contador++) {
+        double horas_trabajadas, salario;
+        cout << "\nHoras trabajadas por el empleado " << contador << ": ";
+        cin >> horas_trabajadas;
+
+        if (horas_trabajadas > 40) {
+            salario = (40 * ptas_hora) + ((horas_trabajadas - 40) * (ptas_hora * 1.5));
+        } else {
+            salario = horas_trabajadas * ptas_hora;
+        }
+
+        cout << "Salario del empleado " << contador << ": " << salario << endl;
+    }
+
+    return 0;
+}
