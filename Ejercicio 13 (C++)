@@ -1,0 +1,26 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    int suma = 0;
+    long long producto = 1; // Usamos long long para evitar desbordamientos debido al producto
+    bool hayPares = false;
+
+    // Iteramos sobre los números del 20 al 400
+    for (int i = 20; i <= 400; i += 2) {
+        suma += i;            // Sumamos el número par
+        producto *= i;        // Multiplicamos el número par
+        hayPares = true;      // Indicamos que al menos hay un número par
+    }
+
+    // Mostramos el resultado
+    if (hayPares) {
+        cout << "Suma de los numeros pares entre 20 y 400: " << suma << endl;
+        cout << "Producto de los numeros pares entre 20 y 400: " << producto << endl;
+    } else {
+        cout << "No se encontraron numeros pares en el rango especificado." << endl;
+    }
+
+    return 0;
+}
