@@ -1,0 +1,36 @@
+#include <iostream>
+#include <cstdlib>  // Para rand() y srand()
+#include <ctime>    // Para time()
+
+using namespace std;
+
+int main() {
+    const int MAXIMO = 100;
+    int numero, intento, n_intentos = 0;
+    bool acierto = false;
+
+    // Inicializar generador de números aleatorios
+    srand(time(0));
+    numero = rand() % MAXIMO + 1; // Número entre 1 y 100
+
+    cout << "Adivina el numero entre 1 y " << MAXIMO << "!" << endl;
+
+    while (!acierto) {
+        cout << "Introduzca un numero: ";
+        cin >> intento;
+        n_intentos++;
+
+        if (intento == numero) {
+            cout << "¡¡Acertaste!!" << endl;
+            acierto = true;
+        } else if (intento < numero) {
+            cout << "El numero es mayor." << endl;
+        } else {
+            cout << "El numero es menor." << endl;
+        }
+    }
+
+    cout << "Has necesitado " << n_intentos << " intento(s)." << endl;
+
+    return 0;
+}
